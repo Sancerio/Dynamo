@@ -633,7 +633,7 @@ namespace Dynamo.Models
 
         public void ReportPosition()
         {
-            RaisePropertyChanged("Position");
+            RaisePropertyChanged(/*NXLT*/"Position");
         }
 
         #endregion

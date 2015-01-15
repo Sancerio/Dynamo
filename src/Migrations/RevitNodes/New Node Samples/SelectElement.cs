@@ -32,7 +32,7 @@ namespace Dynamo.Nodes
             set
             {
                 _selected = value;
-                RaisePropertyChanged("SelectedElement");
+                RaisePropertyChanged(/*NXLT*/"SelectedElement");
             }
         }
 
@@ -45,7 +45,7 @@ namespace Dynamo.Nodes
             set
             {
                 _canSelect = value;
-                RaisePropertyChanged("CanSelect");
+                RaisePropertyChanged(/*NXLT*/"CanSelect");
             }
         }
 

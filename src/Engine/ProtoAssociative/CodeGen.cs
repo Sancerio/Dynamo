@@ -467,7 +467,7 @@ namespace ProtoAssociative
 
             ProtoCore.DSASM.SymbolNode symbolnode = new ProtoCore.DSASM.SymbolNode();
             symbolnode.name = ident;
-            symbolnode.isTemp = ident.StartsWith("%");
+            symbolnode.isTemp = ident.StartsWith(/*NXLT*/"%");
             symbolnode.size = datasize;
             symbolnode.functionIndex = funcIndex;
             symbolnode.absoluteFunctionIndex = funcIndex;
@@ -525,7 +525,7 @@ namespace ProtoAssociative
                     Validity.Assert(funcIndex == ProtoCore.DSASM.Constants.kGlobalScope);
                     ProtoCore.DSASM.SymbolNode staticSymbolnode = new ProtoCore.DSASM.SymbolNode();
                     staticSymbolnode.name = ident;
-                    staticSymbolnode.isTemp = ident.StartsWith("%");
+                    staticSymbolnode.isTemp = ident.StartsWith(/*NXLT*/"%");
                     staticSymbolnode.size = datasize;
                     staticSymbolnode.functionIndex = funcIndex;
                     staticSymbolnode.datatype = datatype;
@@ -619,7 +619,7 @@ namespace ProtoAssociative
                 globalClassIndex);
 
             node.name = ident;
-            node.isTemp = ident.StartsWith("%");
+            node.isTemp = ident.StartsWith(/*NXLT*/"%");
             node.size = datasize;
             node.functionIndex = funcIndex;
             node.absoluteFunctionIndex = funcIndex;
@@ -752,7 +752,7 @@ namespace ProtoAssociative
         {
             SetEntry();
 
-            EmitInstrConsole(ProtoCore.DSASM.kw.dep, exprUID.ToString() + "[ExprUID]", isSSAAssign.ToString() + "[SSA]");
+            EmitInstrConsole(ProtoCore.DSASM.kw.dep, exprUID.ToString() + /*NXLT*/"[ExprUID]", isSSAAssign.ToString() + /*NXLT*/"[SSA]");
 
             Instruction instr = new Instruction();
             instr.opCode = ProtoCore.DSASM.OpCode.DEP;
@@ -1125,7 +1125,7 @@ namespace ProtoAssociative
                                 if (exprList.ArrayDimensions != null)
                                 {
                                     int dimensions = DfsEmitArrayIndexHeap(exprList.ArrayDimensions, graphNode);
-                                    EmitInstrConsole(ProtoCore.DSASM.kw.pushindex, dimensions.ToString() + "[dim]");
+                                    EmitInstrConsole(ProtoCore.DSASM.kw.pushindex, dimensions.ToString() +/*NXLT*/ "[dim]");
                                     EmitPushArrayIndex(dimensions);
                                 }
                             }
@@ -2030,7 +2030,7 @@ namespace ProtoAssociative
                     }
 
                     // The function call
-                    EmitInstrConsole(kw.callr, funcCall.Function.Name + "[dynamic]");
+                    EmitInstrConsole(kw.callr, funcCall.Function.Name + /*NXLT*/"[dynamic]");
                     EmitDynamicCall(dynFunc.Index, 
                                     globalClassIndex, 
                                     depth, 
@@ -4548,7 +4548,7 @@ namespace ProtoAssociative
                     if (core.Options.TempReplicationGuideEmptyFlag && emitReplicationGuide)
                     {
                         int guides = EmitReplicationGuides(t.ReplicationGuides);
-                        EmitInstrConsole(ProtoCore.DSASM.kw.pushindex, guides + "[guide]");
+                        EmitInstrConsole(ProtoCore.DSASM.kw.pushindex, guides + /*NXLT*/"[guide]");
                         EmitPushReplicationGuide(guides);
                     }
                 }
@@ -4578,7 +4578,7 @@ namespace ProtoAssociative
                 BinaryExpressionNode bin = new BinaryExpressionNode();
 
                 binRight.LeftNode = pfNode.Identifier;
-                binRight.RightNode = new IntNode() { value = "1" };
+                binRight.RightNode = new IntNode() { value = /*NXLT*/"1" };
                 binRight.Optr = (ProtoCore.DSASM.UnaryOperator.Increment == pfNode.Operator) ? ProtoCore.DSASM.Operator.add : ProtoCore.DSASM.Operator.sub;
                 bin.LeftNode = pfNode.Identifier;
                 bin.RightNode = binRight;
@@ -4745,14 +4745,14 @@ namespace ProtoAssociative
                 if (range.ArrayDimensions != null)
                 {
                     int dim = DfsEmitArrayIndexHeap(range.ArrayDimensions, graphNode);
-                    EmitInstrConsole(kw.pushindex, dim + "[dim]");
+                    EmitInstrConsole(kw.pushindex, dim + /*NXLT*/"[dim]");
                     EmitPushArrayIndex(dim);
                 }
 
                 if (core.Options.TempReplicationGuideEmptyFlag && emitReplicationGuide)
                 {
                     int guide = EmitReplicationGuides(range.ReplicationGuides);
-                    EmitInstrConsole(kw.pushindex, guide + "[guide]");
+                    EmitInstrConsole(kw.pushindex, guide + /*NXLT*/"[guide]");
                     EmitPushReplicationGuide(guide);
                 }
             }
@@ -4830,7 +4830,7 @@ namespace ProtoAssociative
 
                 int startpc = pc;
 
-                EmitInstrConsole(ProtoCore.DSASM.kw.bounce + " " + blockId + ", " + entry.ToString());
+                EmitInstrConsole(ProtoCore.DSASM.kw.bounce + /*NXLT*/" " + blockId + /*NXLT*/", " + entry.ToString());
                 EmitBounceIntrinsic(blockId, entry);
 
 
@@ -5359,7 +5359,7 @@ namespace ProtoAssociative
                         defaultConstructor.localVars = 0;
                         defaultConstructor.Signature = new ArgumentSignatureNode();
                         defaultConstructor.Pattern = null;
-                        defaultConstructor.ReturnType = new ProtoCore.Type { Name = "var", UID = 0 };
+                        defaultConstructor.ReturnType = new ProtoCore.Type { Name = /*NXLT*/"var", UID = 0 };
                         defaultConstructor.FunctionBody = new CodeBlockNode();
                         defaultConstructor.baseConstr = null;
                         defaultConstructor.access = ProtoCore.Compiler.AccessSpecifier.kPublic;
@@ -5506,11 +5506,11 @@ namespace ProtoAssociative
 
             if (ctorIndex != ProtoCore.DSASM.Constants.kInvalidIndex)
             {
-                EmitInstrConsole(ProtoCore.DSASM.kw.push, codeBlock.codeBlockId + "[block]");
+                EmitInstrConsole(ProtoCore.DSASM.kw.push, codeBlock.codeBlockId + /*NXLT*/"[block]");
                 StackValue opblock = StackValue.BuildBlockIndex(codeBlock.codeBlockId);
                 EmitPush(opblock);
 
-                EmitInstrConsole(ProtoCore.DSASM.kw.push, 0 + "[dim]");
+                EmitInstrConsole(ProtoCore.DSASM.kw.push, 0 +/*NXLT*/ "[dim]");
                 StackValue opdim = StackValue.BuildArrayDimension(0);
                 EmitPush(opdim);
 
@@ -5746,7 +5746,7 @@ namespace ProtoAssociative
                     record.JILRecord = jRecord;
                     record.FunctionName = funcDef.Name;
                     record.ModuleName = funcDef.ExternLibName;
-                    record.ModuleType = "dll";
+                    record.ModuleType = /*NXLT*/"dll";
                     record.IsDNI = false;
                     record.ReturnType = funcDef.ReturnType;
                     record.ParameterTypes = localProcedure.argTypeList;
@@ -6180,7 +6180,7 @@ namespace ProtoAssociative
                         ProtoCore.DSASM.ClassNode cnode = core.ClassTable.ClassNodes[ci];
                         if (cnode.baseList.Count > 0)
                         {
-                            Validity.Assert(1 == cnode.baseList.Count, "We don't support multiple inheritance yet");
+                            Validity.Assert(1 == cnode.baseList.Count, /*NXLT*/"We don't support multiple inheritance yet");
 
                             ci = cnode.baseList[0];
 
@@ -6430,7 +6430,7 @@ namespace ProtoAssociative
                     {
                         FunctionDotCallNode fnode = bnode.RightNode as FunctionDotCallNode;
                         IdentifierNode ident = fnode.DotCall.FormalArguments[0] as IdentifierNode;
-                        string name = "";
+                        string name = /*NXLT*/"";
                         if (ident != null)
                         {
                             name = ident.Value;
@@ -6738,8 +6738,8 @@ namespace ProtoAssociative
                     LanguageBlockNode langblockT = new LanguageBlockNode();
                     int trueBlockId = Constants.kInvalidIndex;
                     langblockT.codeblock.language = ProtoCore.Language.kAssociative;
-                    langblockT.codeblock.fingerprint = "";
-                    langblockT.codeblock.version = "";
+                    langblockT.codeblock.fingerprint = /*NXLT*/"";
+                    langblockT.codeblock.version = /*NXLT*/"";
                     core.AssocNode = bExprTrue;
                     EmitDynamicLanguageBlockNode(langblockT, bExprTrue, ref inferedType, ref trueBlockId, graphNode, ProtoCore.Compiler.Associative.SubCompilePass.kNone);
                     core.AssocNode = null;
@@ -6754,8 +6754,8 @@ namespace ProtoAssociative
                     LanguageBlockNode langblockF = new LanguageBlockNode();
                     int falseBlockId = Constants.kInvalidIndex;
                     langblockF.codeblock.language = ProtoCore.Language.kAssociative;
-                    langblockF.codeblock.fingerprint = "";
-                    langblockF.codeblock.version = "";
+                    langblockF.codeblock.fingerprint =/*NXLT*/ "";
+                    langblockF.codeblock.version =/*NXLT*/ "";
                     core.AssocNode = bExprFalse;
                     EmitDynamicLanguageBlockNode(langblockF, bExprFalse, ref inferedType, ref falseBlockId, graphNode, ProtoCore.Compiler.Associative.SubCompilePass.kNone);
                     core.AssocNode = null;
@@ -6852,7 +6852,7 @@ namespace ProtoAssociative
             }
             else
             {
-                Validity.Assert(false, "Invalid operation, this method is used to retrive the first symbol in an identifier list. It only accepts either an identlist or an ident");
+                Validity.Assert(false, /*NXLT*/"Invalid operation, this method is used to retrive the first symbol in an identifier list. It only accepts either an identlist or an ident");
             }
         }
 
@@ -7318,7 +7318,7 @@ namespace ProtoAssociative
                     }
                     else
                     {
-                        Validity.Assert(false, "We dont have other langauges besides associative and imperative");
+                        Validity.Assert(false, /*NXLT*/"We dont have other langauges besides associative and imperative");
                     }
                 }
             }
@@ -8040,7 +8040,7 @@ namespace ProtoAssociative
                 if (null == graphNode)
                 {
                     isGraphInScope = true;
-                    EmitCompileLog("==============Start Node==============\n");
+                    EmitCompileLog(/*NXLT*/"==============Start Node==============\n");
                     graphNode = new ProtoCore.AssociativeGraph.GraphNode();
                     graphNode.AstID = bnode.ID;
                     graphNode.OriginalAstID = bnode.OriginalAstID; 
@@ -8130,7 +8130,7 @@ namespace ProtoAssociative
                     EmitLHSIdentifierListForBinaryExpr(bnode, ref inferedType, isBooleanOp, graphNode, subPass);
                     if (isGraphInScope)
                     {
-                        EmitCompileLog("==============End Node==============\n");
+                        EmitCompileLog(/*NXLT*/"==============End Node==============\n");
                     }
                     return;
                 }
@@ -8158,7 +8158,7 @@ namespace ProtoAssociative
 
                         if (isGraphInScope)
                         {
-                            EmitCompileLog("==============End Node==============\n");
+                            EmitCompileLog(/*NXLT*/"==============End Node==============\n");
                         }
 
                         return;
@@ -8168,7 +8168,7 @@ namespace ProtoAssociative
                     {
                         if (isGraphInScope)
                         {
-                            EmitCompileLog("==============End Node==============\n");
+                            EmitCompileLog(/*NXLT*/"==============End Node==============\n");
                         }
                         return;
                     }
@@ -8705,7 +8705,7 @@ namespace ProtoAssociative
                     }
                     if (isGraphInScope)
                     {
-                        EmitCompileLog("==============End Node==============\n");
+                        EmitCompileLog(/*NXLT*/"==============End Node==============\n");
                     }
                 }
 
@@ -9127,7 +9127,7 @@ namespace ProtoAssociative
                 }
                 else
                 {
-                    Validity.Assert(false, "an unassignable object used as left-value.");
+                    Validity.Assert(false,/*NXLT*/ "an unassignable object used as left-value.");
                 }
             }
             else
@@ -9221,30 +9221,30 @@ namespace ProtoAssociative
         {
             StringBuilder functionSig = new StringBuilder(isConstructor ? /*NXLT*/"\nconstructor " : /*NXLT*/"\ndef ");
             functionSig.Append(functionName);
-            functionSig.Append(":");
+            functionSig.Append(/*NXLT*/":");
             functionSig.Append(String.IsNullOrEmpty(returnType.Name) ? core.TypeSystem.GetType(returnType.UID) : returnType.Name);
             if (returnType.rank < 0)
             {
-                functionSig.Append("[]..[]");
+                functionSig.Append(/*NXLT*/"[]..[]");
             }
             else
             {
                 for (int k = 0; k < returnType.rank; ++k)
                 {
-                    functionSig.Append("[]");
+                    functionSig.Append(/*NXLT*/"[]");
                 }
             }
-            functionSig.Append("(");
+            functionSig.Append(/*NXLT*/"(");
 
             for (int i = 0; i < signature.Arguments.Count; ++i)
             {
                 var arg = signature.Arguments[i];
                 functionSig.Append(arg.NameNode.Name);
-                functionSig.Append(":");
+                functionSig.Append(/*NXLT*/":");
 
                 if (arg.ArgumentType.UID < 0)
                 {
-                    functionSig.Append("invalid");
+                    functionSig.Append(/*NXLT*/"invalid");
                 }
                 else if (arg.ArgumentType.UID == 0 && !String.IsNullOrEmpty(arg.ArgumentType.Name))
                 {
@@ -9257,22 +9257,22 @@ namespace ProtoAssociative
 
                 if (arg.ArgumentType.rank < 0)
                 {
-                    functionSig.Append("[]..[]");
+                    functionSig.Append(/*NXLT*/"[]..[]");
                 }
                 else
                 {
                     for (int k = 0; k < arg.ArgumentType.rank; ++k)
                     {
-                        functionSig.Append("[]");
+                        functionSig.Append(/*NXLT*/"[]");
                     }
                 }
 
                 if (i < signature.Arguments.Count - 1)
                 {
-                    functionSig.Append(", ");
+                    functionSig.Append(/*NXLT*/", ");
                 }
             }
-            functionSig.Append(")\n");
+            functionSig.Append(/*NXLT*/")\n");
             return functionSig.ToString();
         }
 

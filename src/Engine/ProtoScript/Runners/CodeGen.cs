@@ -241,7 +241,7 @@ namespace Deuterium
         {
             if (dumpByteCode)
             {
-                System.Console.Write("[" + pc + "]" + s);
+                System.Console.Write(/*NXLT*/"[" + pc + "]" + s);
             }
         }
 
@@ -537,7 +537,7 @@ namespace Deuterium
                 }
                 else
                 {
-                    System.Console.WriteLine("Method '" + fnode.name + "' not found\n");
+                    System.Console.WriteLine(/*NXLT*/"Method '" + fnode.name + "' not found\n");
                 }
             }
             else if (node is IfStmtNode)

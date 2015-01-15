@@ -190,7 +190,7 @@ namespace Dynamo.Utilities
             List<TypeLoadData> migrationTypes)
         {
             if (assembly == null)
-                throw new ArgumentNullException("assembly");
+                throw new ArgumentNullException(/*NXLT*/"assembly");
 
             Type[] loadedTypes = null;
 
@@ -200,17 +200,17 @@ namespace Dynamo.Utilities
             }
             catch (ReflectionTypeLoadException e)
             {
-                Log(/*NXLT*/"Could not load types.");
+                Log(Properties.Resources.CouldNotLoadTypes);
                 Log(e);
                 foreach (var ex in e.LoaderExceptions)
                 {
-                    Log(/*NXLT*/"Dll Load Exception:");
+                    Log(Properties.Resources.DllLoadException);
                     Log(ex.ToString());
                 }
             }
             catch (Exception e)
             {
-                Log(/*NXLT*/"Could not load types.");
+                Log(Properties.Resources.CouldNotLoadTypes);
                 Log(e);
             }
 
@@ -240,8 +240,7 @@ namespace Dynamo.Utilities
                 }
                 catch (Exception e)
                 {
-                    Log(/*NXLT*/"Failed to load type from " + assembly.FullName);
-                    Log(/*NXLT*/"The type was " + t.FullName);
+                    Log(string.Format(Properties.Resources.CouldNotLoadTypes, assembly.FullName, t.FullName));
                     Log(e);
                 }
             }

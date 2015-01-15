@@ -111,7 +111,7 @@ namespace Dynamo.DSEngine
             if (splitted.Length < 2)
                 return null;
 
-            return splitted[splitted.Length - 2] + "." + splitted[splitted.Length - 1];
+            return splitted[splitted.Length - 2] + /*NXLT*/"." + splitted[splitted.Length - 1];
         }
 
         public string FunctionSignatureFromFunctionSignatureHint(string functionSignature)
@@ -128,7 +128,7 @@ namespace Dynamo.DSEngine
 
             string newName = priorNameHints[qualifiedFunction];
 
-            return newName + "@" + splitted[1];
+            return newName + /*NXLT*/"@" + splitted[1];
         }
 
         /// <summary>
@@ -293,7 +293,7 @@ namespace Dynamo.DSEngine
                     foreach (ErrorEntry error in LibraryManagementCore.BuildStatus.Errors)
                     {
                         Log(error.Message, WarningLevel.Moderate);
-                        errorMessage += error.Message + "\n";
+                        errorMessage += error.Message + /*NXLT*/"\n";
                     }
 
                     OnLibraryLoadFailed(new LibraryLoadFailedEventArgs(library, errorMessage));
@@ -463,7 +463,7 @@ namespace Dynamo.DSEngine
 
         private static IEnumerable<TypedParameter> GetUnaryFuncArgs()
         {
-            return new List<TypedParameter> { new TypedParameter(null, "x", string.Empty), };
+            return new List<TypedParameter> { new TypedParameter(null, /*NXLT*/"x", string.Empty), };
         }
 
         /// <summary>
@@ -520,7 +520,7 @@ namespace Dynamo.DSEngine
                 return;
             }
 
-            string obsoleteMessage = "";
+            string obsoleteMessage =/*NXLT*/ "";
             int classScope = proc.classScope;
             string className = string.Empty;
             MethodAttributes methodAttribute = proc.MethodAttribute;
@@ -657,11 +657,11 @@ namespace Dynamo.DSEngine
 
         public static class Categories
         {
-            public const string BuiltIns = "Builtin Functions";
-            public const string Operators = "Operators";
-            public const string Constructors = "Create";
-            public const string MemberFunctions = "Actions";
-            public const string Properties = "Query";
+            public const string BuiltIns = /*NXLT*/"Builtin Functions";
+            public const string Operators = /*NXLT*/"Operators";
+            public const string Constructors = /*NXLT*/"Create";
+            public const string MemberFunctions = /*NXLT*/"Actions";
+            public const string Properties = /*NXLT*/"Query";
         }
 
         public class LibraryLoadFailedEventArgs : EventArgs

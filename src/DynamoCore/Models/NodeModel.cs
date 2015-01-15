@@ -79,7 +79,7 @@ namespace Dynamo.Models
                 {
                     renderPackages = value;
                 }
-                RaisePropertyChanged("RenderPackages");
+                RaisePropertyChanged(/*NXLT*/"RenderPackages");
             }
         }
 
@@ -174,7 +174,7 @@ namespace Dynamo.Models
             set
             {
                 isVisible = value;
-                RaisePropertyChanged("IsVisible");
+                RaisePropertyChanged(/*NXLT*/"IsVisible");
             }
         }
 
@@ -188,7 +188,7 @@ namespace Dynamo.Models
             set
             {
                 isUpstreamVisible = value;
-                RaisePropertyChanged("IsUpstreamVisible");
+                RaisePropertyChanged(/*NXLT*/"IsUpstreamVisible");
             }
         }
 
@@ -204,7 +204,7 @@ namespace Dynamo.Models
                     ClearTooltipText();
 
                 state = value;
-                RaisePropertyChanged("State");
+                RaisePropertyChanged(/*NXLT*/"State");
             }
         }
 
@@ -228,7 +228,7 @@ namespace Dynamo.Models
             set
             {
                 toolTipText = value;
-                RaisePropertyChanged("ToolTipText");
+                RaisePropertyChanged(/*NXLT*/"ToolTipText");
             }
         }
 
@@ -241,7 +241,7 @@ namespace Dynamo.Models
             set
             {
                 overrideNameWithNickName = value;
-                RaisePropertyChanged("OverrideNameWithNickName");
+                RaisePropertyChanged(/*NXLT*/"OverrideNameWithNickName");
             }
         }
 
@@ -254,7 +254,7 @@ namespace Dynamo.Models
             set
             {
                 nickName = value;
-                RaisePropertyChanged("NickName");
+                RaisePropertyChanged(/*NXLT*/"NickName");
             }
         }
 
@@ -267,7 +267,7 @@ namespace Dynamo.Models
             set
             {
                 inPorts = value;
-                RaisePropertyChanged("InPorts");
+                RaisePropertyChanged(/*NXLT*/"InPorts");
             }
         }
 
@@ -280,7 +280,7 @@ namespace Dynamo.Models
             set
             {
                 outPorts = value;
-                RaisePropertyChanged("OutPorts");
+                RaisePropertyChanged(/*NXLT*/"OutPorts");
             }
         }
 
@@ -295,7 +295,7 @@ namespace Dynamo.Models
                 if (argumentLacing != value)
                 {
                     argumentLacing = value;
-                    RaisePropertyChanged("ArgumentLacing");
+                    RaisePropertyChanged(/*NXLT*/"ArgumentLacing");
                     OnAstUpdated();
                 }
             }
@@ -339,7 +339,7 @@ namespace Dynamo.Models
             set
             {
                 category = value;
-                RaisePropertyChanged("Category");
+                RaisePropertyChanged(/*NXLT*/"Category");
             }
         }
 
@@ -439,7 +439,7 @@ namespace Dynamo.Models
             set
             {
                 description = value;
-                RaisePropertyChanged("Description");
+                RaisePropertyChanged(/*NXLT*/"Description");
             }
         }
 
@@ -490,7 +490,7 @@ namespace Dynamo.Models
                     return;
 
                 displayLabels = value;
-                RaisePropertyChanged("DisplayLabels");
+                RaisePropertyChanged(/*NXLT*/"DisplayLabels");
             }
         }
 
@@ -549,7 +549,7 @@ namespace Dynamo.Models
                 switch (args.PropertyName)
                 {
                     case ("OverrideName"):
-                        RaisePropertyChanged("NickName");
+                        RaisePropertyChanged(/*NXLT*/"NickName");
                         break;
                     case ("IsSelected"):
                         // Synchronize the selected state of any render packages for this node
@@ -1413,12 +1413,12 @@ namespace Dynamo.Models
                 // operations like file loading or copy-paste have the models created
                 // in different ways and their views will always be up-to-date with 
                 // respect to their models.
-                RaisePropertyChanged("InteractionEnabled");
-                RaisePropertyChanged("State");
-                RaisePropertyChanged("NickName");
-                RaisePropertyChanged("ArgumentLacing");
-                RaisePropertyChanged("IsVisible");
-                RaisePropertyChanged("IsUpstreamVisible");
+                RaisePropertyChanged(/*NXLT*/"InteractionEnabled");
+                RaisePropertyChanged(/*NXLT*/"State");
+                RaisePropertyChanged(/*NXLT*/"NickName");
+                RaisePropertyChanged(/*NXLT*/"ArgumentLacing");
+                RaisePropertyChanged(/*NXLT*/"IsVisible");
+                RaisePropertyChanged(/*NXLT*/"IsUpstreamVisible");
 
                 // Notify listeners that the position of the node has changed,
                 // then all connected connectors will also redraw themselves.
@@ -1443,7 +1443,7 @@ namespace Dynamo.Models
             set
             {
                 forceReExec = value;
-                RaisePropertyChanged("ForceReExecuteOfNode");
+                RaisePropertyChanged(/*NXLT*/"ForceReExecuteOfNode");
             }
         }
 
@@ -1494,7 +1494,7 @@ namespace Dynamo.Models
                 cachedMirrorData = task.MirrorData;
             }
 
-            RaisePropertyChanged("IsUpdated");
+            RaisePropertyChanged(/*NXLT*/"IsUpdated");
         }
 
         /// <summary>

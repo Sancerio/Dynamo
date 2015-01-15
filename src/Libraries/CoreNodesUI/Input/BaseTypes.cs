@@ -139,7 +139,7 @@ namespace Dynamo.Nodes
             switch (e.PropertyName)
             {
                 case "NumberFormat":
-                    RaisePropertyChanged("Value");
+                    RaisePropertyChanged(/*NXLT*/"Value");
                     break;
             }
         }
@@ -183,7 +183,7 @@ namespace Dynamo.Nodes
 
                 ForceReExecuteOfNode = true;
                 OnAstUpdated();
-                RaisePropertyChanged("Value");
+                RaisePropertyChanged(/*NXLT*/"Value");
             }
         }
 

@@ -384,4 +384,22 @@ Sorry about that.</value>
   <data name="WorkbenchNotOpen" xml:space="preserve">
     <value>Workbench could not be opened.</value>
   </data>
+  <data name="CouldNotRepairOneNodeHoles" xml:space="preserve">
+    <value>Could not repair 1-node holes</value>
+  </data>
+  <data name="CustomNodeCouldNotBeInitialized" xml:space="preserve">
+    <value>Custom node \"{0}\" could not be initialized.</value>
+  </data>
+  <data name="FailedToGetMirrorVariable" xml:space="preserve">
+    <value>Failed to get mirror for variable:  {0}; reason: {1}.</value>
+  </data>
+  <data name="FailedToLoadType" xml:space="preserve">
+    <value>Failed to load type from {0}. The type was {1}.</value>
+  </data>
+  <data name="OpenWorkspaceError" xml:space="preserve">
+    <value>There was an error opening the workspace.</value>
+  </data>
+  <data name="UnableToCreateCustomNodeID" xml:space="preserve">
+    <value>Unable to create instance of custom node with id: \"</value>
+  </data>
 </root>

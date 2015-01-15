@@ -324,6 +324,15 @@ namespace Dynamo.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to get mirror for variable:  {0}; reason: {1}..
+        /// </summary>
+        public static string FailedToGetMirrorVariable {
+            get {
+                return ResourceManager.GetString("FailedToGetMirrorVariable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to load {0}\n, Exception: {1}.
         /// </summary>
         public static string FailedToLoad {

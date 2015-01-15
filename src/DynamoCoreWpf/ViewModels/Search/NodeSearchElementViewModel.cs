@@ -28,13 +28,13 @@ namespace Dynamo.Wpf.ViewModels
             switch (propertyChangedEventArgs.PropertyName)
             {
                 case "Name":
-                    RaisePropertyChanged("Name");
+                    RaisePropertyChanged(/*NXLT*/"Name");
                     break;
                 case "IsVisibleInSearch":
-                    RaisePropertyChanged("Visibility");
+                    RaisePropertyChanged(/*NXLT*/"Visibility");
                     break;
                 case "Description":
-                    RaisePropertyChanged("Description");
+                    RaisePropertyChanged(/*NXLT*/"Description");
                     break;
             }
         }
@@ -63,7 +63,7 @@ namespace Dynamo.Wpf.ViewModels
             {
                 if (value.Equals(isSelected)) return;
                 isSelected = value;
-                RaisePropertyChanged("IsSelected");
+                RaisePropertyChanged(/*NXLT*/"IsSelected");
             }
         }
 
@@ -92,14 +92,14 @@ namespace Dynamo.Wpf.ViewModels
             {
                 if (value == path) return;
                 path = value;
-                RaisePropertyChanged("Path");
+                RaisePropertyChanged(/*NXLT*/"Path");
             }
         }
 
         private void ModelOnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
         {
             if (propertyChangedEventArgs.PropertyName == "Path")
-                RaisePropertyChanged("Path");
+                RaisePropertyChanged(/*NXLT*/"Path");
         }
 
         public new CustomNodeSearchElement Model

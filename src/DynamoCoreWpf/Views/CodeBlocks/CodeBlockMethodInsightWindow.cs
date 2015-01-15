@@ -233,7 +233,7 @@ namespace Dynamo.UI
                 if (header == null)
                 {
                     header = Signature;
-                    RaisePropertyChanged("Header");
+                    RaisePropertyChanged(/*NXLT*/"Header");
                 }
                 return header;
             }

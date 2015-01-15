@@ -283,7 +283,7 @@ namespace Dynamo.Models
                 command.Name, command.Value);
         }
 
-        [Obsolete("Node to Code not enabled, API subject to change.")]
+        [Obsolete(/*NXLT*/"Node to Code not enabled, API subject to change.")]
         private void ConvertNodesToCodeImpl(ConvertNodesToCodeCommand command)
         {
             CurrentWorkspace.ConvertNodesToCodeInternal(

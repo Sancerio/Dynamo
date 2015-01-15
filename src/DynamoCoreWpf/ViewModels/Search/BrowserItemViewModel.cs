@@ -117,7 +117,7 @@ namespace Dynamo.Wpf.ViewModels
             {
                 if (value == name) return;
                 name = value;
-                RaisePropertyChanged("Name");
+                RaisePropertyChanged(/*NXLT*/"Name");
             }
         }
 
@@ -128,7 +128,7 @@ namespace Dynamo.Wpf.ViewModels
             {
                 if (Equals(value, items)) return;
                 items = value;
-                RaisePropertyChanged("Items");
+                RaisePropertyChanged(/*NXLT*/"Items");
             }
         }
 
@@ -139,7 +139,7 @@ namespace Dynamo.Wpf.ViewModels
             {
                 if (Equals(value, entries)) return;
                 entries = value;
-                RaisePropertyChanged("Entries");
+                RaisePropertyChanged(/*NXLT*/"Entries");
             }
         }
 
@@ -150,7 +150,7 @@ namespace Dynamo.Wpf.ViewModels
             {
                 if (Equals(value, subCategories)) return;
                 subCategories = value;
-                RaisePropertyChanged("SubCategories");
+                RaisePropertyChanged(/*NXLT*/"SubCategories");
             }
         }
 
@@ -161,7 +161,7 @@ namespace Dynamo.Wpf.ViewModels
             {
                 if (value.Equals(visibility)) return;
                 visibility = value;
-                RaisePropertyChanged("Visibility");
+                RaisePropertyChanged(/*NXLT*/"Visibility");
             }
         }
 
@@ -172,7 +172,7 @@ namespace Dynamo.Wpf.ViewModels
             {
                 if (value.Equals(isSelected)) return;
                 isSelected = value;
-                RaisePropertyChanged("IsSelected");
+                RaisePropertyChanged(/*NXLT*/"IsSelected");
             }
         }
 
@@ -191,7 +191,7 @@ namespace Dynamo.Wpf.ViewModels
             {
                 if (value.Equals(isExpanded)) return;
                 isExpanded = value;
-                RaisePropertyChanged("IsExpanded");
+                RaisePropertyChanged(/*NXLT*/"IsExpanded");
             }
         }
 
@@ -312,7 +312,7 @@ namespace Dynamo.Wpf.ViewModels
         private void ItemOnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
         {
             if (propertyChangedEventArgs.PropertyName == "Visibility")
-                RaisePropertyChanged("Visibility");
+                RaisePropertyChanged(/*NXLT*/"Visibility");
         }
 
         protected virtual void Expand()

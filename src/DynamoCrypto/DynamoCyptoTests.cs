@@ -16,15 +16,15 @@ namespace DynamoCrypto
             var asmDir = Path.GetDirectoryName(asm);
             var testFile =
                 Path.GetFullPath(
-                    Path.Combine(asmDir, @"..\..\..\src\DynamoCrypto\AnAlteredFile.txt"));
+                    Path.Combine(asmDir, /*NXLT*/@"..\..\..\src\DynamoCrypto\AnAlteredFile.txt"));
             var sigFile =
                 Path.GetFullPath(
-                    Path.Combine(asmDir, @"..\..\..\src\DynamoCrypto\AnImportantFile.sig"));
+                    Path.Combine(asmDir, /*NXLT*/@"..\..\..\src\DynamoCrypto\AnImportantFile.sig"));
 
             var pubKey = AssertCertAndPublicKey();
 
             var verify = Utils.VerifyFile(testFile, sigFile, pubKey);
-            Assert.False(verify, "The verification passed, but the file had been altered.");
+            Assert.False(verify, /*NXLT*/"The verification passed, but the file had been altered.");
         }
 
         [Test]
@@ -34,15 +34,15 @@ namespace DynamoCrypto
             var asmDir = Path.GetDirectoryName(asm);
             var testFile =
                 Path.GetFullPath(
-                    Path.Combine(asmDir, @"..\..\..\src\DynamoCrypto\AnImportantFile.txt"));
+                    Path.Combine(asmDir, /*NXLT*/@"..\..\..\src\DynamoCrypto\AnImportantFile.txt"));
             var sigFile =
                 Path.GetFullPath(
-                    Path.Combine(asmDir, @"..\..\..\src\DynamoCrypto\AnAlteredSignature.sig"));
+                    Path.Combine(asmDir,/*NXLT*/ @"..\..\..\src\DynamoCrypto\AnAlteredSignature.sig"));
 
             var pubKey = AssertCertAndPublicKey();
 
             var verify = Utils.VerifyFile(testFile, sigFile, pubKey);
-            Assert.False(verify, "The verification passed, but the signature file had been altered.");
+            Assert.False(verify, /*NXLT*/"The verification passed, but the signature file had been altered.");
         }
 
         [Test]
@@ -52,24 +52,24 @@ namespace DynamoCrypto
             var asmDir = Path.GetDirectoryName(asm);
             var testFile =
                 Path.GetFullPath(
-                    Path.Combine(asmDir, @"..\..\..\src\DynamoCrypto\AnImportantFile.txt"));
+                    Path.Combine(asmDir, /*NXLT*/@"..\..\..\src\DynamoCrypto\AnImportantFile.txt"));
             var sigFile =
                 Path.GetFullPath(
-                    Path.Combine(asmDir, @"..\..\..\src\DynamoCrypto\AnImportantFile.sig"));
+                    Path.Combine(asmDir, /*NXLT*/@"..\..\..\src\DynamoCrypto\AnImportantFile.sig"));
 
             var pubKey = AssertCertAndPublicKey();
 
             var verify = Utils.VerifyFile(testFile, sigFile, pubKey);
-            Assert.True(verify, "The file could not be verified against the signature.");
+            Assert.True(verify, /*NXLT*/"The file could not be verified against the signature.");
         }
 
         private static byte[] AssertCertAndPublicKey()
         {
-            var cert = Utils.FindCertificateForCurrentUser("Dynamo", StoreLocation.CurrentUser);
-            Assert.NotNull(cert, "Dynamo certificate could not be found. Perhaps you need to install the certificate on the testing machine?");
+            var cert = Utils.FindCertificateForCurrentUser(/*NXLT*/"Dynamo", StoreLocation.CurrentUser);
+            Assert.NotNull(cert, /*NXLT*/"Dynamo certificate could not be found. Perhaps you need to install the certificate on the testing machine?");
 
             var pubKey = Utils.GetPublicKeyFromCertificate(cert);
-            Assert.NotNull(pubKey, "A public key could not be returned from the certificate.");
+            Assert.NotNull(pubKey, /*NXLT*/"A public key could not be returned from the certificate.");
 
             return pubKey;
         }

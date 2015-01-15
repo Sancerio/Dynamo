@@ -202,7 +202,7 @@ namespace Dynamo.Models
         {
             get
             {
-                return Process.GetCurrentProcess().ProcessName + "-"
+                return Process.GetCurrentProcess().ProcessName + /*NXLT*/"-"
                     + UpdateManager.UpdateManager.Instance.ProductVersion;
             }
         }
@@ -295,7 +295,7 @@ namespace Dynamo.Models
         {
             if (ShutdownRequested)
             {
-                const string message = "'DynamoModel.ShutDown' called twice";
+                const string message = /*NXLT*/"'DynamoModel.ShutDown' called twice";
                 throw new InvalidOperationException(message);
             }
 
@@ -792,7 +792,7 @@ namespace Dynamo.Models
                     }
                 }
             }
-            Logger.LogError("Could not open workspace at: " + xmlPath);
+            Logger.LogError(/*NXLT*/"Could not open workspace at: " + xmlPath);
         }
 
         private bool OpenFile(WorkspaceHeader workspaceInfo, XmlDocument xmlDoc, out WorkspaceModel workspace)
@@ -1014,7 +1014,7 @@ namespace Dynamo.Models
                     var symbol = (node is Symbol
                         ? (node as Symbol).InputSymbol
                         : (node as Output).Symbol);
-                    var code = (string.IsNullOrEmpty(symbol) ? "x" : symbol) + ";";
+                    var code = (string.IsNullOrEmpty(symbol) ? /*NXLT*/"x" : symbol) +/*NXLT*/ ";";
                     newNode = new CodeBlockNodeModel(code, node.X, node.Y + 100, LibraryServices);
                 }
                 else
@@ -1113,7 +1113,7 @@ namespace Dynamo.Models
             CurrentWorkspace.Clear();
 
             //don't save the file path
-            CurrentWorkspace.FileName = "";
+            CurrentWorkspace.FileName =/*NXLT*/ "";
             CurrentWorkspace.HasUnsavedChanges = false;
             CurrentWorkspace.WorkspaceVersion = AssemblyHelper.GetDynamoVersion();
 
@@ -1143,12 +1143,12 @@ namespace Dynamo.Models
                             (from function in functions
                              where function.IsVisibleInLibrary
                              let displayString = function.UserFriendlyName
-                             where !displayString.Contains("GetType")
+                             where !displayString.Contains(/*NXLT*/"GetType")
                              select string.IsNullOrEmpty(function.Namespace)
-                                ? ""
-                                : function.Namespace + "." + function.Signature + "\n"));
+                                ? /*NXLT*/""
+                                : function.Namespace + /*NXLT*/"." + function.Signature + /*NXLT*/"\n"));
             
-            var sb = string.Join("\n", descriptions);
+            var sb = string.Join(/*NXLT*/"\n", descriptions);
 
             Logger.Log(sb, LogLevel.File);
         }
@@ -1181,7 +1181,7 @@ namespace Dynamo.Models
 
         private void AddZeroTouchNodeToSearch(FunctionDescriptor functionDescriptor)
         {
-            if (functionDescriptor.IsVisibleInLibrary && !functionDescriptor.DisplayName.Contains("GetType"))
+            if (functionDescriptor.IsVisibleInLibrary && !functionDescriptor.DisplayName.Contains(/*NXLT*/"GetType"))
             {
                 SearchModel.Add(new ZeroTouchSearchElement(functionDescriptor));
             }
@@ -1223,12 +1223,12 @@ namespace Dynamo.Models
         /// <param name="currVersion">Current version of the Dynamo.</param>
         private void DisplayObsoleteFileMessage(string fullFilePath, Version fileVersion, Version currVersion)
         {
-            var fileVer = ((fileVersion != null) ? fileVersion.ToString() : "Unknown");
-            var currVer = ((currVersion != null) ? currVersion.ToString() : "Unknown");
+            var fileVer = ((fileVersion != null) ? fileVersion.ToString() : /*NXLT*/"Unknown");
+            var currVer = ((currVersion != null) ? currVersion.ToString() : /*NXLT*/"Unknown");
 
             InstrumentationLogger.LogPiiInfo(
-                "ObsoleteFileMessage",
-                fullFilePath + " :: fileVersion:" + fileVer + " :: currVersion:" + currVer);
+                /*NXLT*/"ObsoleteFileMessage",
+                fullFilePath + /*NXLT*/" :: fileVersion:" + fileVer + /*NXLT*/" :: currVersion:" + currVer);
 
             const string summary = "Your file cannot be opened";
             var description =
@@ -1238,7 +1238,7 @@ namespace Dynamo.Models
                     fileVersion,
                     currVersion);
 
-            const string imageUri = "/DynamoCoreWpf;component/UI/Images/task_dialog_obsolete_file.png";
+            const string imageUri = /*NXLT*/"/DynamoCoreWpf;component/UI/Images/task_dialog_obsolete_file.png";
             var args = new TaskDialogEventArgs(
                 new Uri(imageUri, UriKind.Relative),
                 "Obsolete File",
@@ -1259,7 +1259,7 @@ namespace Dynamo.Models
         private TaskDialogEventArgs DisplayEngineFailureMessage(Exception exception)
         {
             StabilityTracking.GetInstance().NotifyCrash();
-            InstrumentationLogger.LogAnonymousEvent("EngineFailure", "Stability");
+            InstrumentationLogger.LogAnonymousEvent(/*NXLT*/"EngineFailure",/*NXLT*/ "Stability");
 
             if (exception != null)
             {
@@ -1304,8 +1304,8 @@ If you don't mind, it would be helpful for you to send us your file. That will m
             var fileVer = ((fileVersion != null) ? fileVersion.ToString() : "Unknown");
             var currVer = ((currVersion != null) ? currVersion.ToString() : "Unknown");
 
-            InstrumentationLogger.LogPiiInfo("FutureFileMessage", fullFilePath +
-                " :: fileVersion:" + fileVer + " :: currVersion:" + currVer);
+            InstrumentationLogger.LogPiiInfo(/*NXLT*/"FutureFileMessage", fullFilePath +
+                /*NXLT*/" :: fileVersion:" + fileVer + /*NXLT*/" :: currVersion:" + currVer);
 
             const string summary = "Your file may not open correctly";
             var description = string.Format("Your file '{0}' was created in future version '{1}' and may not " +

@@ -19,7 +19,7 @@ namespace Dynamo.Models
             {
                 if (Equals(value, runEnabled)) return;
                 runEnabled = value;
-                RaisePropertyChanged("RunEnabled");
+                RaisePropertyChanged(/*NXLT*/"RunEnabled");
             }
         }
 

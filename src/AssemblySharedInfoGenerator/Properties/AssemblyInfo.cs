@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("AssemblyInfoGenerator")]
+[assembly: AssemblyTitle(/*NXLT*/"AssemblyInfoGenerator")]
 
-[assembly: AssemblyCulture("")]
-[assembly: Guid("ee3f94ae-5b7c-4853-a26b-082ece99ed66")]
+[assembly: AssemblyCulture(/*NXLT*/"")]
+[assembly: Guid(/*NXLT*/"ee3f94ae-5b7c-4853-a26b-082ece99ed66")]

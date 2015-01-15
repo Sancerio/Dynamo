@@ -34,7 +34,7 @@ namespace Dynamo
 
         public LogEventArgs(Exception e, LogLevel level)
         {
-            Message = e.Message + "\n" + e.StackTrace;
+            Message = e.Message + /*NXLT*/"\n" + e.StackTrace;
             Level = level;
         }
     }
@@ -92,7 +92,7 @@ namespace Dynamo
                 {
                     if (ConsoleWriter != null)
                         return ConsoleWriter.ToString();
-                    return "";
+                    return /*NXLT*/"";
                 }
             }
         }
@@ -108,7 +108,7 @@ namespace Dynamo
                 _isDisposed = false;
 
                 WarningLevel = WarningLevel.Mild;
-                Warning = "";
+                Warning = /*NXLT*/"";
 
                 UpdateManager.UpdateManager.Instance.Log += UpdateManager_Log;
                 
@@ -148,8 +148,8 @@ namespace Dynamo
                         {
                             try
                             {
-                                ConsoleWriter.AppendLine(string.Format("{0}", message));
-                                FileWriter.WriteLine(string.Format("{0} : {1}", DateTime.Now, message));
+                                ConsoleWriter.AppendLine(string.Format(/*NXLT*/"{0}", message));
+                                FileWriter.WriteLine(string.Format(/*NXLT*/"{0} : {1}", DateTime.Now, message));
                                 FileWriter.Flush();
                                 RaisePropertyChanged(/*NXLT*/"ConsoleWriter");
                             }
@@ -166,7 +166,7 @@ namespace Dynamo
                         {
                             try
                             {
-                                FileWriter.WriteLine(string.Format("{0} : {1}", DateTime.Now, message));
+                                FileWriter.WriteLine(string.Format(/*NXLT*/"{0} : {1}", DateTime.Now, message));
                                 FileWriter.Flush();
                             }
                             catch
@@ -215,7 +215,7 @@ namespace Dynamo
         {
             lock (this.guardMutex)
             {
-                Warning = "";
+                Warning = /*NXLT*/"";
                 WarningLevel = WarningLevel.Mild;
             }
         }
@@ -235,7 +235,7 @@ namespace Dynamo
         /// <param name="e"></param>
         public void Log(Exception e)
         {
-            Log(e.GetType() + ":", LogLevel.Console);
+            Log(e.GetType() + /*NXLT*/":", LogLevel.Console);
             Log(e.Message, LogLevel.Console);
             Log(e.StackTrace, LogLevel.Console);
         }
@@ -247,7 +247,7 @@ namespace Dynamo
         /// <param name="data"></param>
         public void Log(string tag, string data)
         {
-            Log(string.Format("{0}:{1}", tag, data));
+            Log(string.Format(/*NXLT*/"{0}:{1}", tag, data));
         }
 
         public void ClearLog()

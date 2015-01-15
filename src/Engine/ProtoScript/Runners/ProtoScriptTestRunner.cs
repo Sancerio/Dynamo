@@ -268,7 +268,7 @@ namespace ProtoScript.Runners
                 }
                 catch (ProtoCore.Exceptions.ExecutionCancelledException e)
                 {
-                    Console.WriteLine("The execution has been cancelled!");             
+                    Console.WriteLine(/*NXLT*/"The execution has been cancelled!");             
                 }
                 
                 if (!isTest)

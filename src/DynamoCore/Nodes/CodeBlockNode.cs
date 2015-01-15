@@ -207,7 +207,7 @@ namespace Dynamo.Nodes
                     LoadAndCreateConnectors(inportConnections, outportConnections, recorder);
                 }
 
-                RaisePropertyChanged("Code");
+                RaisePropertyChanged(/*NXLT*/"Code");
                 ForceReExecuteOfNode = true;
                 OnAstUpdated();
                 ReportPosition();

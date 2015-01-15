@@ -134,7 +134,7 @@ namespace ProtoCore
             {
                 if (core.Options.CompileToLib)
                 {
-                    string path = "";
+                    string path = /*NXLT*/"";
                     if (core.Options.LibPath == null)
                     {
                         path += core.Options.RootModulePathName + /*NXLT*/"ASM";
@@ -377,7 +377,7 @@ namespace ProtoCore
             {
                 if (dumpByteCode && !isAssocOperator)
                 {
-                    var str = string.Format(/*NXLT*/"[{0}.{1}.{2}]{3}\n", codeBlock.language == Language.kAssociative ? "a" : "i", codeBlock.codeBlockId, pc, instr);
+                    var str = string.Format(/*NXLT*/"[{0}.{1}.{2}]{3}\n", codeBlock.language == Language.kAssociative ? /*NXLT*/"a" : /*NXLT*/"i", codeBlock.codeBlockId, pc, instr);
                     for (int i = 0; i < core.AsmOutputIdents; ++i)
                         core.AsmOutput.Write(/*NXLT*/"\t");
                     core.AsmOutput.Write(str);
@@ -387,7 +387,7 @@ namespace ProtoCore
             {
                 if (dumpByteCode)
                 {
-                    var str = string.Format(/*NXLT*/"[{0}.{1}.{2}]{3}\n", codeBlock.language == Language.kAssociative ? "a" : "i", codeBlock.codeBlockId, pc, instr);
+                    var str = string.Format(/*NXLT*/"[{0}.{1}.{2}]{3}\n", codeBlock.language == Language.kAssociative ? /*NXLT*/"a" : /*NXLT*/"i", codeBlock.codeBlockId, pc, instr);
                     for (int i = 0; i < core.AsmOutputIdents; ++i)
                         core.AsmOutput.Write(/*NXLT*/"\t");
                     core.AsmOutput.Write(str);
@@ -400,7 +400,7 @@ namespace ProtoCore
             {
                 if (dumpByteCode && !isAssocOperator)
                 {
-                    var str = string.Format(/*NXLT*/"[{0}.{1}.{2}]{3} {4}\n", codeBlock.language == Language.kAssociative ? "a" : "i", codeBlock.codeBlockId, pc, instr, op1);
+                    var str = string.Format(/*NXLT*/"[{0}.{1}.{2}]{3} {4}\n", codeBlock.language == Language.kAssociative ?/*NXLT*/ "a" :/*NXLT*/ "i", codeBlock.codeBlockId, pc, instr, op1);
                     for (int i = 0; i < core.AsmOutputIdents; ++i)
                         core.AsmOutput.Write(/*NXLT*/"\t");
                     core.AsmOutput.Write(str);
@@ -410,7 +410,7 @@ namespace ProtoCore
             {
                 if (dumpByteCode)
                 {
-                    var str = string.Format(/*NXLT*/"[{0}.{1}.{2}]{3} {4}\n", codeBlock.language == Language.kAssociative ? "a" : "i", codeBlock.codeBlockId, pc, instr, op1);
+                    var str = string.Format(/*NXLT*/"[{0}.{1}.{2}]{3} {4}\n", codeBlock.language == Language.kAssociative ? /*NXLT*/"a" : /*NXLT*/"i", codeBlock.codeBlockId, pc, instr, op1);
                     for (int i = 0; i < core.AsmOutputIdents; ++i)
                         core.AsmOutput.Write(/*NXLT*/"\t");
                     core.AsmOutput.Write(str);
@@ -423,7 +423,7 @@ namespace ProtoCore
             {
                 if (dumpByteCode && !isAssocOperator)
                 {
-                    var str = string.Format(/*NXLT*/"[{0}.{1}.{2}]{3} {4} {5}\n", codeBlock.language == Language.kAssociative ? "a" : "i", codeBlock.codeBlockId, pc, instr, op1, op2);
+                    var str = string.Format(/*NXLT*/"[{0}.{1}.{2}]{3} {4} {5}\n", codeBlock.language == Language.kAssociative ?/*NXLT*/ "a" :/*NXLT*/ "i", codeBlock.codeBlockId, pc, instr, op1, op2);
                     for (int i = 0; i < core.AsmOutputIdents; ++i)
                         core.AsmOutput.Write(/*NXLT*/"\t");
                     core.AsmOutput.Write(str);
@@ -433,7 +433,7 @@ namespace ProtoCore
             {
                 if (dumpByteCode)
                 {
-                    var str = string.Format(/*NXLT*/"[{0}.{1}.{2}]{3} {4} {5}\n", codeBlock.language == Language.kAssociative ? "a" : "i", codeBlock.codeBlockId, pc, instr, op1, op2);
+                    var str = string.Format(/*NXLT*/"[{0}.{1}.{2}]{3} {4} {5}\n", codeBlock.language == Language.kAssociative ? /*NXLT*/"a" : /*NXLT*/"i", codeBlock.codeBlockId, pc, instr, op1, op2);
                     for (int i = 0; i < core.AsmOutputIdents; ++i)
                         core.AsmOutput.Write(/*NXLT*/"\t");
                     core.AsmOutput.Write(str);
@@ -446,7 +446,7 @@ namespace ProtoCore
             {
                 if (dumpByteCode && !isAssocOperator)
                 {
-                    var str = string.Format(/*NXLT*/"[{0}.{1}.{2}]{3} {4} {5} {6}\n", codeBlock.language == Language.kAssociative ? "a" : "i", codeBlock.codeBlockId, pc, instr, op1, op2, op3);
+                    var str = string.Format(/*NXLT*/"[{0}.{1}.{2}]{3} {4} {5} {6}\n", codeBlock.language == Language.kAssociative ? /*NXLT*/"a" : /*NXLT*/"i", codeBlock.codeBlockId, pc, instr, op1, op2, op3);
                     for (int i = 0; i < core.AsmOutputIdents; ++i)
                         core.AsmOutput.Write(/*NXLT*/"\t");
                     core.AsmOutput.Write(str);
@@ -456,7 +456,7 @@ namespace ProtoCore
             {
                 if (dumpByteCode)
                 {
-                    var str = string.Format(/*NXLT*/"[{0}.{1}.{2}]{3} {4} {5} {6}\n", codeBlock.language == Language.kAssociative ? "a" : "i", codeBlock.codeBlockId, pc, instr, op1, op2, op3);
+                    var str = string.Format(/*NXLT*/"[{0}.{1}.{2}]{3} {4} {5} {6}\n", codeBlock.language == Language.kAssociative ? /*NXLT*/"a" : /*NXLT*/"i", codeBlock.codeBlockId, pc, instr, op1, op2, op3);
                     for (int i = 0; i < core.AsmOutputIdents; ++i)
                         core.AsmOutput.Write(/*NXLT*/"\t");
                     core.AsmOutput.Write(str);
@@ -473,7 +473,7 @@ namespace ProtoCore
         protected string GetConstructBlockName(string construct)
         {
             string desc = /*NXLT*/"blockname";
-            return blockScope.ToString() + "_" + construct + "_" + desc;
+            return blockScope.ToString() + /*NXLT*/"_" + construct + /*NXLT*/"_" + desc;
         }
 
         protected ProtoCore.DSASM.DebugInfo GetDebugObject(int line, int col, int eline, int ecol, int nextStep_a, int nextStep_b = ProtoCore.DSASM.Constants.kInvalidIndex)
@@ -854,7 +854,7 @@ namespace ProtoCore
                 else if (identnode.Value == ProtoCore.DSDefinitions.Keyword.This)
                 {
                     finalType.UID = lefttype.UID = contextClassScope;
-                    EmitInstrConsole(ProtoCore.DSASM.kw.push, 0 + "[dim]");
+                    EmitInstrConsole(ProtoCore.DSASM.kw.push, 0 + /*NXLT*/"[dim]");
                     StackValue opdim = StackValue.BuildArrayDimension(0);
                     EmitPush(opdim);
                     EmitThisPointerNode();
@@ -878,7 +878,7 @@ namespace ProtoCore
                     }
 
                     bool callOnClass = false;
-                    string leftClassName = "";
+                    string leftClassName = /*NXLT*/"";
                     int leftci = Constants.kInvalidIndex;
 
                     if (pNode is ProtoCore.AST.ImperativeAST.IdentifierListNode ||
@@ -1811,7 +1811,7 @@ namespace ProtoCore
             if (!core.DebugProps.breakOptions.HasFlag(DebugProperties.BreakpointOptions.SuppressNullVarDeclarationBreakpoint))
             {
                 // Don't need no pop for temp (unless caller demands it).
-                if (outputBreakpoint || !symbol.name.StartsWith("%"))
+                if (outputBreakpoint || !symbol.name.StartsWith(/*NXLT*/"%"))
                     instr.debug = GetDebugObject(line, col, eline, ecol, pc);
             }
             AppendInstruction(instr, line, col);
@@ -2233,8 +2233,8 @@ namespace ProtoCore
             {
                 buildStatus.LogSyntaxError(Resources.tooManyCharacters, null, node.line, node.col);
             }
-  
-            String strValue = "'" + value + "'";
+
+            String strValue = /*NXLT*/"'" + value +/*NXLT*/ "'";
             StackValue op = ProtoCore.DSASM.StackValue.BuildChar(value[0]);
 
             if (core.Options.TempReplicationGuideEmptyFlag && emitReplicationGuide)
@@ -2276,7 +2276,7 @@ namespace ProtoCore
 
             foreach (char ch in value)
             {
-                String strValue = "'" + ch + "'";
+                String strValue = /*NXLT*/"'" + ch +/*NXLT*/ "'";
                 EmitInstrConsole(kw.push, strValue);
 
                 StackValue op = StackValue.BuildChar(ch);
@@ -2421,7 +2421,7 @@ namespace ProtoCore
                     int replicationGuides = 0;
 
                     // Push the number of guides
-                    EmitInstrConsole(ProtoCore.DSASM.kw.push, replicationGuides + "[guide]");
+                    EmitInstrConsole(ProtoCore.DSASM.kw.push, replicationGuides + /*NXLT*/"[guide]");
                     StackValue opNumGuides = StackValue.BuildReplicationGuide(replicationGuides);
                     EmitPush(opNumGuides);
                 }
@@ -2460,7 +2460,7 @@ namespace ProtoCore
                     int replicationGuides = 0;
 
                     // Push the number of guides
-                    EmitInstrConsole(ProtoCore.DSASM.kw.push, replicationGuides + "[guide]");
+                    EmitInstrConsole(ProtoCore.DSASM.kw.push, replicationGuides + /*NXLT*/"[guide]");
                     StackValue opNumGuides = StackValue.BuildReplicationGuide(replicationGuides);
                     EmitPush(opNumGuides);
                 }
@@ -2513,7 +2513,7 @@ namespace ProtoCore
 
                 if (emitNumber)
                 {
-                    EmitInstrConsole(ProtoCore.DSASM.kw.push, replicationGuides + "[guide]");
+                    EmitInstrConsole(ProtoCore.DSASM.kw.push, replicationGuides + /*NXLT*/"[guide]");
                     StackValue opNumGuides = StackValue.BuildReplicationGuide(replicationGuides);
                     EmitPush(opNumGuides);
                 }
@@ -2583,7 +2583,7 @@ namespace ProtoCore
             if (exprlist.ArrayDimensions != null)
             {
                 int dimensions = DfsEmitArrayIndexHeap(exprlist.ArrayDimensions, graphNode);
-                EmitInstrConsole(ProtoCore.DSASM.kw.pushindex, dimensions.ToString() + "[dim]");
+                EmitInstrConsole(ProtoCore.DSASM.kw.pushindex, dimensions.ToString() + /*NXLT*/"[dim]");
                 EmitPushArrayIndex(dimensions);
             }
 
@@ -2593,7 +2593,7 @@ namespace ProtoCore
                 {
                     var exprNode = node as ProtoCore.AST.AssociativeAST.ExprListNode;
                     int guides = EmitReplicationGuides(exprNode.ReplicationGuides);
-                    EmitInstrConsole(ProtoCore.DSASM.kw.pushindex, guides + "[guide]");
+                    EmitInstrConsole(ProtoCore.DSASM.kw.pushindex, guides + /*NXLT*/"[guide]");
                     EmitPushReplicationGuide(guides);
                 }
             }
@@ -2827,7 +2827,7 @@ namespace ProtoCore
             {
                 return;
             }
-            EmitInstrConsole(ProtoCore.DSASM.kw.push, "defaultArg");
+            EmitInstrConsole(ProtoCore.DSASM.kw.push,/*NXLT*/ "defaultArg");
             EmitPush(StackValue.BuildDefaultArgument());
         }
 
@@ -2856,31 +2856,31 @@ namespace ProtoCore
             // TODO Jun: Consider adding the block and dimension information in the instruction instead of storing them on the stack
 
             // Push the identifier block information 
-            EmitInstrConsole(ProtoCore.DSASM.kw.push, block + "[block]");
+            EmitInstrConsole(ProtoCore.DSASM.kw.push, block + /*NXLT*/"[block]");
             StackValue opblock = StackValue.BuildBlockIndex(block);
             EmitPush(opblock);
 
             // TODO Jun: Performance 
             // Is it faster to have a 'pop' specific to arrays to prevent popping dimension for pop to instruction?
-            EmitInstrConsole(ProtoCore.DSASM.kw.push, dimensions + "[dim]");
+            EmitInstrConsole(ProtoCore.DSASM.kw.push, dimensions + /*NXLT*/"[dim]");
             StackValue opdim = StackValue.BuildArrayDimension(dimensions);
             EmitPush(opdim);
 
 
             // Push the identifier block information 
-            string srank = "";
+            string srank = /*NXLT*/"";
             if (rank == Constants.nDimensionArrayRank)
             {
-                srank = "[]..[]";
+                srank = /*NXLT*/"[]..[]";
             }
             else
             {
                 for (int i = 0; i < rank; ++i)
                 {
-                    srank += "[]";
+                    srank +=/*NXLT*/ "[]";
                 }
             }
-            EmitInstrConsole(ProtoCore.DSASM.kw.push, UID + srank + "[type]");
+            EmitInstrConsole(ProtoCore.DSASM.kw.push, UID + srank +/*NXLT*/ "[type]");
             EmitPushType(UID, rank);
         }
 
@@ -2902,7 +2902,7 @@ namespace ProtoCore
             }
 
             StackValue op = StackValue.BuildDynamic(0);
-            EmitInstrConsole(ProtoCore.DSASM.kw.push, "dynamic");
+            EmitInstrConsole(ProtoCore.DSASM.kw.push,/*NXLT*/ "dynamic");
             EmitPush(op);
         }
 
@@ -2913,7 +2913,7 @@ namespace ProtoCore
                 return;
             }
             StackValue op = StackValue.BuildThisPtr(0);
-            EmitInstrConsole(ProtoCore.DSASM.kw.push, "thisPtr");
+            EmitInstrConsole(ProtoCore.DSASM.kw.push, /*NXLT*/"thisPtr");
             EmitPush(op);
         }
 
@@ -2932,7 +2932,7 @@ namespace ProtoCore
             {
                 int classIndex = procNode.classScope;
                 string className = core.ClassTable.ClassNodes[classIndex].name;
-                name = String.Format(@"{0}.{1}", className, name);
+                name = String.Format(/*NXLT*/@"{0}.{1}", className, name);
             }
 
             EmitInstrConsole(kw.push, name);
@@ -2958,7 +2958,7 @@ namespace ProtoCore
         protected ProtoCore.DSASM.AttributeEntry PopulateAttribute(dynamic anode)
         {
             Validity.Assert(anode is ProtoCore.AST.AssociativeAST.FunctionCallNode || anode is ProtoCore.AST.ImperativeAST.FunctionCallNode);
-            int cix = core.ClassTable.IndexOf(string.Format("{0}Attribute", anode.Function.Name));
+            int cix = core.ClassTable.IndexOf(string.Format(/*NXLT*/"{0}Attribute", anode.Function.Name));
             if (cix == ProtoCore.DSASM.Constants.kInvalidIndex)
             {
                 buildStatus.LogSemanticError(string.Format(Resources.unknownAttribute, anode.Function.Name), core.CurrentDSFileName, anode.line, anode.col);

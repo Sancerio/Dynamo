@@ -157,7 +157,7 @@ namespace Dynamo.Controls
 
         private void CountDownDoubleAnimation_Completed(object sender, EventArgs e)
         {
-            //Console.WriteLine("FadeOut done");
+            //Console.WriteLine(/*NXLT*/"FadeOut done");
             fadeInStoryBoard.Stop(this);
             fadeOutStoryBoard.Stop(this);
 
@@ -167,7 +167,7 @@ namespace Dynamo.Controls
 
         private void CountUpDoubleAnimation_Completed(object sender, EventArgs e)
         {
-            //Console.WriteLine("FadeIn done");
+            //Console.WriteLine(/*NXLT*/"FadeIn done");
             mainGrid.Opacity = Configurations.MaxOpacity;
             mainGrid.Visibility = Visibility.Visible;
         }
