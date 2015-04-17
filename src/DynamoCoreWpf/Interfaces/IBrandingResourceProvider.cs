@@ -39,6 +39,7 @@ namespace Dynamo.Wpf.Interfaces
         string GetString(ResourceNames.ConsentForm resourceName);
 
         Window CreateAboutBox(DynamoViewModel model);
+        Window CreateGalleryView(DynamoViewModel model);
 
         string ProductName { get; }
     }

@@ -31,6 +31,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 using Dynamo.Services;
 using ResourceNames = Dynamo.Wpf.Interfaces.ResourceNames;
+using Dynamo.Wpf.Views.Gallery;
 
 namespace Dynamo.Controls
 {
@@ -319,11 +320,24 @@ namespace Dynamo.Controls
             }
         }
 
+        void GalleryViewLoaded(object sender, RoutedEventArgs e)
+        {
+            //DynamoModel.OnRequestUsageAgreementStatusDialog(new UsageAgreementEventArgs(
+                        //UsageAgreementEventArgs.EventStatusType.End));
+        }
+
         private void DynamoView_Loaded(object sender, EventArgs e)
         {
 
             // If first run, Collect Info Prompt will appear
             UsageReportingManager.Instance.CheckIsFirstRun(this, dynamoViewModel.BrandingResourceProvider);
+            var galleryView = new GalleryView(dynamoViewModel)
+            {
+                Owner = this
+            };
+            galleryView.Loaded += GalleryViewLoaded;
+            galleryView.Show();
+            galleryView.Loaded -= GalleryViewLoaded;
 
             WorkspaceTabs.SelectedIndex = 0;
             dynamoViewModel = (DataContext as DynamoViewModel);
