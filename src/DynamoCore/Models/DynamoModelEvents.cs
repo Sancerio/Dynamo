@@ -52,6 +52,14 @@ namespace Dynamo.Models
                 RequestMigrationStatusDialog(args);
         }
 
+        public static event UsageAgreementHandler RequestUsageAgreementStatusDialog;
+
+        public static void OnRequestUsageAgreementStatusDialog(UsageAgreementEventArgs args)
+        {
+            if (RequestUsageAgreementStatusDialog != null)
+                RequestUsageAgreementStatusDialog(args);
+        }
+
         public event EventHandler RequestLayoutUpdate;
         public virtual void OnRequestLayoutUpdate(object sender, EventArgs e)
         {

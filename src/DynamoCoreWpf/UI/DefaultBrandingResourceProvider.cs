@@ -86,6 +86,11 @@ namespace Dynamo.Wpf.UI
             return new AboutWindow(model);
         }
 
+        public Window CreateGalleryView(DynamoViewModel model)
+        {
+            return new Dynamo.Wpf.Views.Gallery.GalleryView(model);
+        }
+
         public string ProductName { get { return "Dynamo"; } }
         #endregion
 

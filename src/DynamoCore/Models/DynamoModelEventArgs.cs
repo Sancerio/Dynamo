@@ -278,4 +278,22 @@ namespace Dynamo.Models
 
     }
 
+    public class UsageAgreementEventArgs : EventArgs
+    {
+        public enum EventStatusType
+        {
+            Invalid = 0,
+            Begin,
+            End
+        }
+
+        public EventStatusType EventStatus;
+
+        public UsageAgreementEventArgs(EventStatusType eventStatus)
+        {
+            EventStatus = eventStatus;
+        }
+
+    }
+
 }
