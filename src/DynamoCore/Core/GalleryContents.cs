@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dynamo.Core;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace Dynamo
 {
-    public class GalleryContent
+    public class GalleryContent:NotificationObject
     {
         private string header;
         public string Header { get; set; }
@@ -17,6 +18,20 @@ namespace Dynamo
 
         private string image;
         public string Image { get; set; }
+
+        private bool isCurrent;
+        public bool IsCurrent
+        {
+            get
+            {
+                return isCurrent;
+            }
+            set
+            {
+                isCurrent = value;
+                RaisePropertyChanged("IsCurrent");
+            }
+        }
     }
 
     public class GalleryContents
