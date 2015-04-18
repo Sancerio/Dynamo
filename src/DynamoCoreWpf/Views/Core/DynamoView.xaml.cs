@@ -328,16 +328,7 @@ namespace Dynamo.Controls
 
         private void DynamoView_Loaded(object sender, EventArgs e)
         {
-
-            // If first run, Collect Info Prompt will appear
             UsageReportingManager.Instance.CheckIsFirstRun(this, dynamoViewModel.BrandingResourceProvider);
-            var galleryView = new GalleryView(dynamoViewModel)
-            {
-                Owner = this
-            };
-            galleryView.Loaded += GalleryViewLoaded;
-            galleryView.Show();
-            galleryView.Loaded -= GalleryViewLoaded;
 
             WorkspaceTabs.SelectedIndex = 0;
             dynamoViewModel = (DataContext as DynamoViewModel);

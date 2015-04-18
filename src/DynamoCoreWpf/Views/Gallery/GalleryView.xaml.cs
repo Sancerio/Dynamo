@@ -6,14 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Dynamo.Wpf.Views.Gallery
 {
@@ -23,13 +15,12 @@ namespace Dynamo.Wpf.Views.Gallery
     public partial class GalleryView : Window
     {
         private GalleryViewModel viewModel = null;
-
+        public GalleryViewModel ViewModel { get { return viewModel; } }
         public GalleryView(DynamoViewModel dynamoViewModel)
         {
             InitializeComponent();
-
             viewModel = new GalleryViewModel(dynamoViewModel);
-            this.DataContext = viewModel;
+            this.DataContext = viewModel;       
         }
 
         private void CloseGallery(object sender, RoutedEventArgs e)

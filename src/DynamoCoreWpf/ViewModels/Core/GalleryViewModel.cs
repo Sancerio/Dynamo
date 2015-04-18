@@ -32,9 +32,9 @@ namespace Dynamo.Wpf.ViewModels.Core
                 currentContent.Header = contents[0].Header;
                 currentContent.Body = contents[0].Body;
                 contents[0].IsCurrent = true;
+                MoveNextCommand = new DelegateCommand(MoveNext, CanMoveNext);
+                MovePrevCommand = new DelegateCommand(MovePrev, CanMovePrev);
             }
-            MoveNextCommand = new DelegateCommand(MoveNext, CanMoveNext);
-            MovePrevCommand = new DelegateCommand(MovePrev, CanMovePrev);
         }
 
         public void MoveNext(object parameters)
