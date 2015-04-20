@@ -1233,6 +1233,7 @@
                 Value="False" />
         <Setter Property="MaxHeight" Value="50"/>
         <Setter Property="MaxWidth" Value="600"/>
+        <Setter Property="Background" Value="Gray"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="ItemsPanel">
             <Setter.Value>

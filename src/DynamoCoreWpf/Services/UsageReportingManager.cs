@@ -148,6 +148,8 @@ namespace Dynamo.Services
             // First run of Dynamo
             if (dynamoModel.PreferenceSettings.IsFirstRun)
             {
+                FirstRun = false;
+
                 //Analytics enable by defaultwa
                 IsAnalyticsReportingApproved = true;
 

@@ -1059,18 +1059,14 @@ namespace Dynamo.ViewModels
             return true;
         }
 
-        private void ShowGalleryUI(object parameter)
+        private void ShowGallery(object parameter)
         {
-            var galleryView = parameter as GalleryView;
-            galleryView.Show();
+            OnRequestShowGallery(this);
         }
 
-        private bool CanShowGalleryUI(object parameter)
+        private bool CanShowGallery(object parameter)
         {
-            var galleryViewModel = parameter as GalleryViewModel;
-
-            return (galleryViewModel.Contents != null &&
-                galleryViewModel.Contents.Count != 0);
+            return true;
         }
 
         private void OpenRecent(object path)

@@ -15,6 +15,7 @@ using Microsoft.Practices.Prism.ViewModel;
 using Dynamo.Wpf.Properties;
 using Dynamo.Wpf.Views.Gallery;
 using Dynamo.Wpf.ViewModels.Core;
+using System.Linq;
 
 namespace Dynamo.UI.Controls
 {
@@ -163,7 +164,7 @@ namespace Dynamo.UI.Controls
 
             references.Add(new StartPageListItem(Resources.StartPageWhatsNew, "icon-discussion.png")
             {
-                ContextData = ButtonNames.ShowGalleryUI,
+                ContextData = ButtonNames.ShowGallery,
                 ClickAction = StartPageListItem.Action.RegularCommand
             });
 
@@ -363,11 +364,8 @@ namespace Dynamo.UI.Controls
                     dvm.ShowNewFunctionDialogCommand.Execute(null);
                     break;
 
-                case ButtonNames.ShowGalleryUI:
-                    GalleryViewModel galleryViewModel = new GalleryViewModel(this.DynamoViewModel);
-                    GalleryView galleryView = new GalleryView(galleryViewModel);
-                    if (dvm.ShowGalleryUICommand.CanExecute(galleryViewModel))
-                        dvm.ShowGalleryUICommand.Execute(galleryView);
+                case ButtonNames.ShowGallery:
+                    dvm.ShowGalleryCommand.Execute(null);
                     break;
 
                 default:
@@ -404,12 +402,14 @@ namespace Dynamo.UI.Controls
         public const string NewWorkspace = "NewWorkspace";
         public const string NewCustomNodeWorkspace = "NewCustomNodeWorkspace";
         public const string OpenWorkspace = "OpenWorkspace";
-        public const string ShowGalleryUI = "ShowGalleryUI";
+        public const string ShowGallery = "ShowGallery";
     }
 
     public partial class StartPageView : UserControl
     {
         private DynamoViewModel dynamoViewModel;
+        private GalleryView galleryView;
+        private GalleryViewModel galleryViewModel;
 
         public StartPageView()
         {
@@ -433,14 +433,11 @@ namespace Dynamo.UI.Controls
 
             var id = Wpf.Interfaces.ResourceNames.StartPage.Image;
             StartPageLogo.Source = dynamoViewModel.BrandingResourceProvider.GetImageSource(id);
-
+            Dispatcher.BeginInvoke(new Action(ShowGalleryView));
             if (dynamoViewModel.Model.PreferenceSettings.IsFirstRun)
             {
                 dynamoViewModel.Model.PreferenceSettings.IsFirstRun = false;
-                GalleryViewModel galleryViewModel = new GalleryViewModel(dynamoViewModel);
-                GalleryView galleryView = new GalleryView(galleryViewModel);
-                if (dynamoViewModel.ShowGalleryUICommand.CanExecute(galleryViewModel))
-                    dynamoViewModel.ShowGalleryUICommand.Execute(galleryView);
+                Dispatcher.BeginInvoke(new Action(ShowGalleryView));
             }
         }
 
@@ -465,6 +462,19 @@ namespace Dynamo.UI.Controls
         }
 
         #endregion
+
+        internal void ShowGalleryView()
+        {
+            if(galleryView == null) // On-demand creation.
+            {
+                galleryViewModel = new GalleryViewModel(dynamoViewModel);
+                galleryView = new GalleryView(galleryViewModel);
+                //galleryView.Owner = Window.GetWindow(this);
+            }
+
+            //if (!galleryViewModel.Contents.Any()) //only when there's content.
+                //galleryView.ShowDialog();
+        }
 
         private void OnSampleFileSelected(object sender, RoutedEventArgs e)
         {

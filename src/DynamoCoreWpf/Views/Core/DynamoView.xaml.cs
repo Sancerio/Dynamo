@@ -31,6 +31,8 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 using Dynamo.Services;
 using ResourceNames = Dynamo.Wpf.Interfaces.ResourceNames;
+using Dynamo.Wpf.ViewModels.Core;
+using Dynamo.Wpf.Views.Gallery;
 
 namespace Dynamo.Controls
 {
@@ -386,6 +388,9 @@ namespace Dynamo.Controls
             //ABOUT WINDOW
             dynamoViewModel.RequestAboutWindow += DynamoViewModelRequestAboutWindow;
 
+            //SHOW GALLERY
+            dynamoViewModel.RequestShowGallery += DynamoViewModelRequestShowGallery;
+
             LoadNodeViewCustomizations();
             SubscribeNodeViewCustomizationEvents();
 
@@ -428,6 +433,21 @@ namespace Dynamo.Controls
             aboutWindow.Owner = this;
             aboutWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             aboutWindow.ShowDialog();
+        }
+
+        void DynamoViewModelRequestShowGallery(DynamoViewModel model)
+        {
+            var galleryViewModel = new GalleryViewModel(dynamoViewModel);
+            var galleryView = new GalleryView(galleryViewModel);
+
+            GalleryUi.Width = this.Width;
+            GalleryUi.Height = this.Height;
+            GalleryUi.Visibility = Visibility.Visible;
+            GalleryUi.Background = Brushes.WhiteSmoke;
+            //galleryView.Owner = Window.GetWindow(this);
+
+            //if (galleryViewModel.Contents.Any()) //only when there's content.
+              //  galleryView.ShowDialog();
         }
 
         private PublishPackageView _pubPkgView;
@@ -772,6 +792,9 @@ namespace Dynamo.Controls
 
             //ABOUT WINDOW
             dynamoViewModel.RequestAboutWindow -= DynamoViewModelRequestAboutWindow;
+
+            //SHOW GALLERY
+            dynamoViewModel.RequestShowGallery -= DynamoViewModelRequestShowGallery;
         }
 
         // the key press event is being intercepted before it can get to
