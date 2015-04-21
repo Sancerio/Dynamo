@@ -104,7 +104,8 @@ namespace Dynamo.Wpf.ViewModels.Core
 
         internal void CloseGallery(object parameters)
         {
-            OnRequestCloseGallery();
+            //forward CloseGallery to DynamoViewModel
+            dvm.CloseGalleryCommand.Execute(null);
         }
 
         internal bool CanCloseGallery(object parameters)

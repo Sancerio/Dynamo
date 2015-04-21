@@ -74,6 +74,7 @@ namespace Dynamo.ViewModels
             GetBranchVisualizationCommand = new DelegateCommand(GetBranchVisualization, CanGetBranchVisualization);
             DumpLibraryToXmlCommand = new DelegateCommand(model.DumpLibraryToXml, model.CanDumpLibraryToXml);
             ShowGalleryCommand = new DelegateCommand(ShowGallery, CanShowGallery);
+            CloseGalleryCommand = new DelegateCommand(CloseGallery, CanCloseGallery);
         }
 
         public DelegateCommand OpenCommand { get; set; }
@@ -145,5 +146,6 @@ namespace Dynamo.ViewModels
         public DelegateCommand CheckForLatestRenderCommand { get; set; }
         public DelegateCommand DumpLibraryToXmlCommand { get; set; }
         public DelegateCommand ShowGalleryCommand { get; set; }
+        public DelegateCommand CloseGalleryCommand { get; set; }
     }
 }

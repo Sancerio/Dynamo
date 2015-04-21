@@ -1064,7 +1064,17 @@ namespace Dynamo.ViewModels
             OnRequestShowGallery();
         }
 
+        private void CloseGallery(object parameter)
+        {
+            OnRequestCloseGallery();
+        }
+
         private bool CanShowGallery(object parameter)
+        {
+            return true;
+        }
+
+        private bool CanCloseGallery(object parameter)
         {
             return true;
         }
