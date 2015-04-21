@@ -23,7 +23,7 @@ namespace Dynamo.Wpf.Views.Gallery
 
         private void GalleryView_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            e.Handled = true; //Bubbling up clicking to DynamoView
+            e.Handled = true; //So that the clicking doesn't bubble-up to the DynamoView.
         }
     }
 }
