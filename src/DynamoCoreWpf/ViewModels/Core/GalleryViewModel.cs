@@ -46,7 +46,6 @@ namespace Dynamo.Wpf.ViewModels.Core
                     galleryContents = serializer.Deserialize(fs) as GalleryContents;
                     fs.Close(); // Release file lock
                 }
-
                 return galleryContents;
             }
             catch (Exception)
@@ -78,6 +77,12 @@ namespace Dynamo.Wpf.ViewModels.Core
 
             if (contents != null)
             {
+                //Set image path relative to gallery Directory
+                foreach (GalleryContent content in contents)
+                {
+                    content.ImagePath = Path.Combine(galleryDirectory, content.ImagePath);
+                }
+
                 currentContent = contents.FirstOrDefault();
 
                 if (currentContent != null) //if contents is not empty

@@ -16,6 +16,7 @@ using Dynamo.Wpf.Properties;
 using Dynamo.Wpf.Views.Gallery;
 using Dynamo.Wpf.ViewModels.Core;
 using System.Linq;
+using Dynamo.Services;
 
 namespace Dynamo.UI.Controls
 {
@@ -408,8 +409,6 @@ namespace Dynamo.UI.Controls
     public partial class StartPageView : UserControl
     {
         private DynamoViewModel dynamoViewModel;
-        private GalleryView galleryView;
-        private GalleryViewModel galleryViewModel;
 
         public StartPageView()
         {
@@ -433,12 +432,9 @@ namespace Dynamo.UI.Controls
 
             var id = Wpf.Interfaces.ResourceNames.StartPage.Image;
             StartPageLogo.Source = dynamoViewModel.BrandingResourceProvider.GetImageSource(id);
-            Dispatcher.BeginInvoke(new Action(ShowGalleryView));
-            if (dynamoViewModel.Model.PreferenceSettings.IsFirstRun)
-            {
-                dynamoViewModel.Model.PreferenceSettings.IsFirstRun = false;
-                Dispatcher.BeginInvoke(new Action(ShowGalleryView));
-            }
+
+            if(UsageReportingManager.IsShowGalleryAtStart)
+                dynamoViewModel.ShowGalleryCommand.Execute(null);
         }
 
         private void OnItemSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -462,19 +458,6 @@ namespace Dynamo.UI.Controls
         }
 
         #endregion
-
-        internal void ShowGalleryView()
-        {
-            //if(galleryView == null) // On-demand creation.
-            //{
-                //galleryViewModel = new GalleryViewModel(dynamoViewModel);
-                //galleryView = new GalleryView(galleryViewModel);
-                //galleryView.Owner = Window.GetWindow(this);
-            //}
-
-            //if (!galleryViewModel.Contents.Any()) //only when there's content.
-                //galleryView.ShowDialog();
-        }
 
         private void OnSampleFileSelected(object sender, RoutedEventArgs e)
         {

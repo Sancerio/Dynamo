@@ -1702,7 +1702,8 @@
                                             VerticalAlignment="Top" Margin="10,30" />
         </Grid>
 
-        <Grid Name="galleryUi" MouseLeftButtonDown="OutsideGalleryView_MouseLeftButtonDown"/>
+        <Grid Name="galleryUi" 
+              MouseLeftButtonDown="OutsideGalleryView_MouseLeftButtonDown"/>
 
     </Grid>
 

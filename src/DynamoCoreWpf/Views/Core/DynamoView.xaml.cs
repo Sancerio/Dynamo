@@ -462,7 +462,6 @@ namespace Dynamo.Controls
                 galleryUi.Children.Add(galleryView);
                 galleryUi.Visibility = Visibility.Visible;
                 galleryView.Focus(); //get keyboard focus (for ESC)
-                //galleryUi.Click += OutsideGallery_Click;
             }
         }
 
