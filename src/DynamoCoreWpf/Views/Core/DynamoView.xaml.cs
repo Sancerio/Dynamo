@@ -46,6 +46,7 @@ namespace Dynamo.Controls
         private Stopwatch _timer;
         private StartPageViewModel startPage;
         private int tabSlidingWindowStart, tabSlidingWindowEnd;
+        private GalleryView galleryView;
 
         DispatcherTimer _workspaceResizeTimer = new DispatcherTimer { Interval = new TimeSpan(0, 0, 0, 0, 500), IsEnabled = false };
 
@@ -435,19 +436,23 @@ namespace Dynamo.Controls
             aboutWindow.ShowDialog();
         }
 
-        void DynamoViewModelRequestShowGallery(DynamoViewModel model)
+        void DynamoViewModelRequestShowGallery()
         {
-            var galleryViewModel = new GalleryViewModel(dynamoViewModel);
-            var galleryView = new GalleryView(galleryViewModel);
+            if(galleryView == null) //On-demand instantiation
+              galleryView = new GalleryView(new GalleryViewModel(dynamoViewModel));
 
-            GalleryUi.Width = this.Width;
-            GalleryUi.Height = this.Height;
-            GalleryUi.Visibility = Visibility.Visible;
-            GalleryUi.Background = Brushes.WhiteSmoke;
-            //galleryView.Owner = Window.GetWindow(this);
+            if (GalleryViewModel.IsAnyContent)
+            {
+                Grid.SetColumnSpan(galleryUi, mainGrid.ColumnDefinitions.Count);
+                Grid.SetRowSpan(galleryUi, mainGrid.RowDefinitions.Count);
 
-            //if (galleryViewModel.Contents.Any()) //only when there's content.
-              //  galleryView.ShowDialog();
+                galleryUi.Background = new SolidColorBrush(Colors.Black)
+                {
+                    Opacity = 0.8
+                };
+                galleryUi.Children.Add(galleryView);
+                galleryUi.Visibility = Visibility.Visible;
+            }
         }
 
         private PublishPackageView _pubPkgView;

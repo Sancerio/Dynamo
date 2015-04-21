@@ -465,12 +465,12 @@ namespace Dynamo.UI.Controls
 
         internal void ShowGalleryView()
         {
-            if(galleryView == null) // On-demand creation.
-            {
-                galleryViewModel = new GalleryViewModel(dynamoViewModel);
-                galleryView = new GalleryView(galleryViewModel);
+            //if(galleryView == null) // On-demand creation.
+            //{
+                //galleryViewModel = new GalleryViewModel(dynamoViewModel);
+                //galleryView = new GalleryView(galleryViewModel);
                 //galleryView.Owner = Window.GetWindow(this);
-            }
+            //}
 
             //if (!galleryViewModel.Contents.Any()) //only when there's content.
                 //galleryView.ShowDialog();

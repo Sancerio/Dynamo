@@ -37,9 +37,6 @@ namespace Dynamo.Wpf.ViewModels.Core
 
         public static GalleryContents Load(string filePath)
         {
-            if (string.IsNullOrEmpty(filePath) || (!File.Exists(filePath)))
-                return null;
-
             try
             {
                 var galleryContents = new GalleryContents();
@@ -54,7 +51,7 @@ namespace Dynamo.Wpf.ViewModels.Core
             }
             catch (Exception)
             {
-                return null;
+                return new GalleryContents();
             }
         }
     }
@@ -68,10 +65,12 @@ namespace Dynamo.Wpf.ViewModels.Core
         public IEnumerable<GalleryContent> Contents { get { return contents; } }
         public DelegateCommand MoveNextCommand { get; set; }
         public DelegateCommand MovePrevCommand { get; set; }
+        public DelegateCommand CloseGalleryCommand { get; set; }
         #endregion
 
         public GalleryViewModel(DynamoViewModel dynamoViewModel) 
-        {          
+        {
+            dvm = dynamoViewModel;
             var pathManager = dynamoViewModel.Model.PathManager;
             var galleryFilePath = pathManager.GalleryFilePath;
             var galleryDirectory = pathManager.GalleryDirectory;
@@ -81,12 +80,36 @@ namespace Dynamo.Wpf.ViewModels.Core
             {
                 currentContent = contents.FirstOrDefault();
 
-                if(currentContent != null) //if contents is empty
+                if (currentContent != null) //if contents is not empty
+                {
                     currentContent.IsCurrent = true;
+                    isAnyContent = true;
+                }
 
                 MoveNextCommand = new DelegateCommand(MoveNext, CanMoveNext);
                 MovePrevCommand = new DelegateCommand(MovePrev, CanMovePrev);
+                CloseGalleryCommand = new DelegateCommand(CloseGallery,CanCloseGallery);
             }
+        }
+
+        #region event handlers
+        internal event RequestCloseGalleryHandler RequestCloseGallery;
+        internal virtual void OnRequestCloseGallery()
+        {
+            if (RequestCloseGallery != null)
+            {
+                RequestCloseGallery();
+            }
+        }
+
+        internal void CloseGallery(object parameters)
+        {
+            OnRequestCloseGallery();
+        }
+
+        internal bool CanCloseGallery(object parameters)
+        {
+            return true;
         }
 
         internal void MoveNext(object parameters)
@@ -108,6 +131,7 @@ namespace Dynamo.Wpf.ViewModels.Core
         {
             return true;
         }
+        #endregion
 
         /// <summary>
         /// Move the currentIndex of the Gallery Bullets
@@ -128,10 +152,14 @@ namespace Dynamo.Wpf.ViewModels.Core
             RaisePropertyChanged("CurrentBody");
         }
 
+        public static bool IsAnyContent { get {return isAnyContent;} }
+
         #region private fields
+        private DynamoViewModel dvm;
         private GalleryContent currentContent;
         private List<GalleryContent> contents;
         private int currentIndex = 0;
+        private static bool isAnyContent = false;
         #endregion
     }
 }

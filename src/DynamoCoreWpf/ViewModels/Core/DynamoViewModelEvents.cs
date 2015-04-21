@@ -78,11 +78,20 @@ namespace Dynamo.ViewModels
         }
 
         public event RequestShowGalleryHandler RequestShowGallery;
-        public virtual void OnRequestShowGallery(DynamoViewModel vm)
+        public virtual void OnRequestShowGallery()
         {
             if (RequestShowGallery != null)
             {
-                RequestShowGallery(vm);
+                RequestShowGallery();
+            }
+        }
+
+        public event RequestCloseGalleryHandler RequestCloseGallery;
+        public virtual void OnRequestCloseGallery()
+        {
+            if(RequestCloseGallery != null)
+            {
+                RequestCloseGallery();
             }
         }
 

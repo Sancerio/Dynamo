@@ -4,8 +4,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:ui="clr-namespace:Dynamo.UI"
-        Background="Gray"
-        Height="600" Width="800">
+        d:DesignHeight="600" 
+        d:DesignWidth="800"
+        VerticalAlignment="Center"
+        HorizontalAlignment="Center"
+        Background="White"
+        mc:Ignorable="d"
+        Focusable="True"
+        Padding="0,0,0,20">
     
     <UserControl.Resources>
         <ResourceDictionary>
@@ -15,6 +21,11 @@
         </ResourceDictionary>
     </UserControl.Resources>
     
+    <UserControl.InputBindings>
+        <KeyBinding Key="Escape"
+                    Command="{Binding Path=CloseGalleryCommand}" />
+    </UserControl.InputBindings>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"></ColumnDefinition>
@@ -37,7 +48,7 @@
                 Width="32" 
                 Height="32" 
                 VerticalAlignment="Bottom" 
-                Click="CloseGallery">
+                Command="{Binding Path=CloseGalleryCommand}">
             <Button.Content>
                 <Image Source="CloseIcon.png" 
                        VerticalAlignment="Center" 

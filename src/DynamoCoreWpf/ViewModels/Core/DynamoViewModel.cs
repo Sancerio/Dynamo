@@ -1061,7 +1061,7 @@ namespace Dynamo.ViewModels
 
         private void ShowGallery(object parameter)
         {
-            OnRequestShowGallery(this);
+            OnRequestShowGallery();
         }
 
         private bool CanShowGallery(object parameter)

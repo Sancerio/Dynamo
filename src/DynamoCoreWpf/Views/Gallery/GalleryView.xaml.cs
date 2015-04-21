@@ -15,15 +15,28 @@ namespace Dynamo.Wpf.Views.Gallery
     /// </summary>
     public partial class GalleryView : UserControl
     {
+        private GalleryViewModel viewModel;
+        public GalleryViewModel ViewModel { get { return viewModel; } }
         public GalleryView(GalleryViewModel galleryViewModel)
         {
             InitializeComponent();
             DataContext = galleryViewModel;
+            viewModel = galleryViewModel;
+            this.Loaded += OnGalleryViewLoaded;
         }
 
-        private void CloseGallery(object sender, RoutedEventArgs e)
+        private void OnGalleryViewLoaded(object sender, RoutedEventArgs e)
         {
-            //this.Close();
+            viewModel.RequestCloseGallery += GalleryViewModelRequestCloseGallery;
+            this.Focus();
+        }
+
+        void GalleryViewModelRequestCloseGallery()
+        {
+            Grid galleryUI = (Grid) this.Parent;
+            galleryUI.Visibility = Visibility.Hidden;
+            galleryUI.Children.Remove(this);
+            viewModel.RequestCloseGallery -= GalleryViewModelRequestCloseGallery;
         }
     }
 }
